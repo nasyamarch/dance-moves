@@ -1,0 +1,104 @@
+{
+  "dance": {
+    "1": {
+      "id": "1",
+      "name": {
+        "eng": "Lindy Hop",
+        "ru": "Линди-хоп"
+      }
+    },
+    "2": {
+      "id": "2",
+      "name": {
+        "eng": "Solo Jazz",
+        "ru": "Соло-джаз"
+      }
+    },
+    "3": {
+      "id": "3",
+      "name": {
+        "eng": "Balboa",
+        "ru": "Бальбоа"
+      }
+    },
+    "4": {
+      "id": "4",
+      "name": {
+        "eng": "Solo Balboa",
+        "ru": "Соло-бальбоа"
+      }
+    },
+    "5": {
+      "id": "5",
+      "name": {
+        "eng": "Blues",
+        "ru": "Блюз"
+      }
+    },
+    "6": {
+      "id": "6",
+      "name": {
+        "eng": "Solo Blues",
+        "ru": "Соло-блюз"
+      }
+    }
+  },
+  "move": {
+    "1": {
+      "id": "1",
+      "name": {
+        "eng": "6 count footwork with triple steps",
+        "ru": "Бейсик на 6 счётов с трипл-степами"
+      },
+      "description": {
+        "eng": "step-step-triple step-triple step",
+        "ru": "степ-степ-триплстеп-триплстеп"
+      },
+      "video_urls": [
+        "https://www.youtube.com/watch?v=-FvsnqL124Q&list=PLfJQ9eiHSrcTe-PKbQHh1r6PMYuaXq4oM&index=2",
+        "https://www.youtube.com/watch?v=U9yKEnewTas"
+      ],
+      "tag_ids": [
+        1,
+        5
+      ]
+    }
+  },
+  "tag": {
+    "1": {
+      "id": "1",
+      "name": {
+        "eng": "Level/Beginner",
+        "ru": "Уровень/Новичок"
+      }
+    },
+    "2": {
+      "id": "2",
+      "name": {
+        "eng": "Level/Intermediate",
+        "ru": "Уровень/Средний"
+      }
+    },
+    "3": {
+      "id": "3",
+      "name": {
+        "eng": "Level/Advance",
+        "ru": "Уровень/Продвинутый"
+      }
+    },
+    "4": {
+      "id": "4",
+      "name": {
+        "eng": "Level/Master ",
+        "ru": "Уровень/Профи"
+      }
+    },
+    "5": {
+      "id": "5",
+      "name": {
+        "eng": "Type/Basic",
+        "ru": "Тип/Бейсик"
+      }
+    }
+  }
+}
