@@ -2,6 +2,7 @@
   "dance": {
     "1": {
       "id": "1",
+      "slug": "lindy-hop",
       "name": {
         "eng": "Lindy Hop",
         "ru": "Линди-хоп"
@@ -9,6 +10,7 @@
     },
     "2": {
       "id": "2",
+      "slug": "solo-jazz",
       "name": {
         "eng": "Solo Jazz",
         "ru": "Соло-джаз"
@@ -16,6 +18,7 @@
     },
     "3": {
       "id": "3",
+      "slug": "balboa",
       "name": {
         "eng": "Balboa",
         "ru": "Бальбоа"
@@ -23,6 +26,7 @@
     },
     "4": {
       "id": "4",
+      "slug": "solo-balboa",
       "name": {
         "eng": "Solo Balboa",
         "ru": "Соло-бальбоа"
@@ -30,6 +34,7 @@
     },
     "5": {
       "id": "5",
+      "slug": "blues",
       "name": {
         "eng": "Blues",
         "ru": "Блюз"
@@ -37,6 +42,7 @@
     },
     "6": {
       "id": "6",
+      "slug": "solo-blues",
       "name": {
         "eng": "Solo Blues",
         "ru": "Соло-блюз"
@@ -46,6 +52,8 @@
   "move": {
     "1": {
       "id": "1",
+      "dance_id": "1",
+      "slug": "6-count-footwork",
       "name": {
         "eng": "6 count footwork with triple steps",
         "ru": "Бейсик на 6 счётов с трипл-степами"
@@ -54,50 +62,184 @@
         "eng": "step-step-triple step-triple step",
         "ru": "степ-степ-триплстеп-триплстеп"
       },
-      "video_urls": [
+      "video_url": "https://www.youtube.com/watch?v=U9yKEnewTas",
+      "related_video_urls": [
         "https://www.youtube.com/watch?v=-FvsnqL124Q&list=PLfJQ9eiHSrcTe-PKbQHh1r6PMYuaXq4oM&index=2",
-        "https://www.youtube.com/watch?v=U9yKEnewTas"
+        "https://www.youtube.com/watch?v=5SSZJtdyf8g"
       ],
-      "tag_ids": [
-        1,
-        5
-      ]
+      "related_move_ids": ["2", "3"],
+      "related_links": [],
+      "tag_ids": [1, 5],
+      "likes_count": 24,
+      "order": 1
+    },
+    "2": {
+      "id": "2",
+      "dance_id": "1",
+      "slug": "swing-out",
+      "name": {
+        "eng": "Swing Out",
+        "ru": "Свинг-аут"
+      },
+      "description": {
+        "eng": "The core 8-count Lindy Hop move: the leader sends the follower out from closed position into open position and back.",
+        "ru": "Базовое движение линди-хопа на 8 счётов: ведущий выносит ведомую из закрытой позиции в открытую и возвращает обратно."
+      },
+      "video_url": "https://www.youtube.com/watch?v=VSE7SD3l3uA",
+      "related_video_urls": [
+        "https://www.youtube.com/watch?v=GKCoYT8V37c",
+        "https://www.youtube.com/watch?v=LsuE7gfH9_0",
+        "https://www.youtube.com/watch?v=nFOGeqL_XgQ"
+      ],
+      "related_move_ids": ["1"],
+      "related_links": [
+        {
+          "title": {
+            "eng": "Lindy Hop on Wikipedia",
+            "ru": "Линди-хоп в Википедии"
+          },
+          "url": "https://en.wikipedia.org/wiki/Lindy_Hop"
+        }
+      ],
+      "tag_ids": [1, 5],
+      "likes_count": 41,
+      "order": 2
+    },
+    "3": {
+      "id": "3",
+      "dance_id": "1",
+      "slug": "rock-step",
+      "name": {
+        "eng": "Rock Step",
+        "ru": "Рок-степ"
+      },
+      "description": {
+        "eng": "A step back onto the supporting foot and a return — the start of most six-count moves.",
+        "ru": "Шаг назад на опорную ногу с возвратом — начало большинства шестисчётных движений."
+      },
+      "video_url": "https://www.youtube.com/watch?v=Tud_5vEv07A",
+      "related_video_urls": [
+        "https://www.youtube.com/watch?v=EYR10kvfInY",
+        "https://www.youtube.com/watch?v=BlLd9vb9Luo"
+      ],
+      "related_move_ids": ["1"],
+      "related_links": [],
+      "tag_ids": [1, 5],
+      "likes_count": 17,
+      "order": 3
+    },
+    "4": {
+      "id": "4",
+      "dance_id": "2",
+      "slug": "shim-sham",
+      "name": {
+        "eng": "Shim Sham",
+        "ru": "Шим-Шам"
+      },
+      "description": {
+        "eng": "The classic jazz line dance — the foundational solo jazz routine.",
+        "ru": "Классический джазовый лайн-данс — базовый набор для соло-джаза."
+      },
+      "video_url": "https://www.youtube.com/watch?v=sa5HSlTCwsM",
+      "related_video_urls": [
+        "https://www.youtube.com/watch?v=ekM8gAITnIs",
+        "https://www.youtube.com/watch?v=GXFzd6Xeq4E"
+      ],
+      "related_move_ids": [],
+      "related_links": [],
+      "tag_ids": [1, 5],
+      "likes_count": 35,
+      "order": 1
+    },
+    "5": {
+      "id": "5",
+      "dance_id": "3",
+      "slug": "balboa-basic",
+      "name": {
+        "eng": "Balboa Basic",
+        "ru": "Бейсик бальбоа"
+      },
+      "description": {
+        "eng": "The Balboa basic: weight shifts and footwork in a small space, at close embrace.",
+        "ru": "Базовый шаг бальбоа: переносы веса и работа ног в маленьком объёме в объятии."
+      },
+      "video_url": "https://www.youtube.com/watch?v=wf_fQpq0VF0",
+      "related_video_urls": [
+        "https://www.youtube.com/watch?v=Ht9bMqTZkNA",
+        "https://www.youtube.com/watch?v=lCkOBK3PLm8",
+        "https://www.youtube.com/watch?v=gtPHwtP0WVg"
+      ],
+      "related_move_ids": [],
+      "related_links": [],
+      "tag_ids": [1, 5],
+      "likes_count": 12,
+      "order": 1
+    },
+    "6": {
+      "id": "6",
+      "dance_id": "6",
+      "slug": "solo-blues-basic",
+      "name": {
+        "eng": "Solo Blues Basic",
+        "ru": "Бейсик соло-блюз"
+      },
+      "description": {
+        "eng": "Basic hip pulses, walks and lunges in solo blues.",
+        "ru": "Базовые импульсы бёдрами, шаги и выпады в соло-блюзе."
+      },
+      "video_url": "https://www.youtube.com/watch?v=iXymufJWsjc",
+      "related_video_urls": [],
+      "related_move_ids": [],
+      "related_links": [],
+      "tag_ids": [1, 5],
+      "likes_count": 9,
+      "order": 1
     }
   },
   "tag": {
     "1": {
       "id": "1",
+      "category": "level",
+      "order": 1,
       "name": {
-        "eng": "Level/Beginner",
-        "ru": "Уровень/Новичок"
+        "eng": "Beginner",
+        "ru": "Новичок"
       }
     },
     "2": {
       "id": "2",
+      "category": "level",
+      "order": 2,
       "name": {
-        "eng": "Level/Intermediate",
-        "ru": "Уровень/Средний"
+        "eng": "Intermediate",
+        "ru": "Средний"
       }
     },
     "3": {
       "id": "3",
+      "category": "level",
+      "order": 3,
       "name": {
-        "eng": "Level/Advance",
-        "ru": "Уровень/Продвинутый"
+        "eng": "Advanced",
+        "ru": "Продвинутый"
       }
     },
     "4": {
       "id": "4",
+      "category": "level",
+      "order": 4,
       "name": {
-        "eng": "Level/Master ",
-        "ru": "Уровень/Профи"
+        "eng": "Master",
+        "ru": "Профи"
       }
     },
     "5": {
       "id": "5",
+      "category": "type",
+      "order": 1,
       "name": {
-        "eng": "Type/Basic",
-        "ru": "Тип/Бейсик"
+        "eng": "Basic",
+        "ru": "Бейсик"
       }
     }
   }
