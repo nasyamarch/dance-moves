@@ -1,0 +1,60 @@
+@use 'variables' as *;
+@use "formulas" as *;
+
+@mixin mobile-small {
+    @media (min-width: #{$mobile-small}) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media (min-width: #{$mobile}) {
+        @content;
+    }
+}
+
+@mixin mobile-large {
+    @media (min-width: #{$mobile-large}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: #{$tablet}) {
+        @content;
+    }
+}
+
+@mixin tablet-large {
+    @media (min-width: #{$tablet-large}) {
+        @content;
+    }
+}
+
+@mixin desktop-small {
+    @media (min-width: #{$desktop-small}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: #{$desktop}) {
+        @content;
+    }
+}
+
+@mixin desktop-large {
+    @media (min-width: #{$desktop-large}) {
+        @content;
+    }
+}
+
+@mixin font-face($font-family, $file-name, $font-weight: 400, $font-style: normal) {
+    @font-face {
+        font-family: $font-family;
+        src: url("../fonts/#{$file-name}.woff2") format("woff2");
+        font-weight: $font-weight;
+        font-style: $font-style;
+        font-display: swap;
+    }
+}

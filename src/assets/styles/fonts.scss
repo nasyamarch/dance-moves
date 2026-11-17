@@ -1,0 +1,11 @@
+@use "mixins" as *;
+
+@include font-face("Lato", "Lato-Regular", 400);
+@include font-face("Lato", "Lato-Italic", 400, italic);
+@include font-face("Lato", "Lato-Bold", 700);
+@include font-face("Lato", "Lato-BoldItalic", 700, italic);
+@include font-face("Lato", "Lato-Black", 900);
+@include font-face("Lato", "Lato-Black", 900, italic);
+
+@include font-face("Inter", "Inter");
+@include font-face("Inter", "Inter-Italic", 400, italic);

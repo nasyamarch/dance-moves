@@ -3,35 +3,95 @@
 </script>
 
 <template>
-  <footer class="footer">
-    <div class="footer__container">
-      <h4>Сайт создан в целях обучения и прикола</h4>
-      <h5>Наслаждайтесь</h5>
-      <h5>Предложения об улучшении и тапки кидать сюда:</h5>
-    </div>
-  </footer>
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__head">
+                <div class="footer__logo">
+                    <RouterLink
+                        class="header__logo"
+                        :to="{ name: 'home' }"
+                    >
+                        swing<span>moves</span>
+                    </RouterLink>
+                </div>
+                <h2 class="footer__title">Сайт создан в целях обучения и&nbsp;прикола</h2>
+
+            </div>
+
+
+            <div class="column">
+                <h4>Предложения об улучшении, похвалу и&nbsp;тапки кидать сюда:</h4>
+                <h5>Написать мне в&nbsp;телеграм
+                    <a href="https://t.me/nasya_march">@nasya_march</a>
+                </h5>
+                <h5>Написать мне на&nbsp;почту
+                    <a href="mailto:nastya.marchenko00@gmail.com">nastya.marchenko00@gmail.com</a>
+                </h5>
+            </div>
+
+        </div>
+    </footer>
 </template>
 
 <style lang="scss">
-  .footer {
-    width: 100%;
-    padding: 24px 32px;
-    min-height: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-top: 2px solid black;
+@use "@/assets/styles/formulas" as *;
+@use "@/assets/styles/mixins" as *;
 
-    @media(max-width: 550px) {
-      min-height: 120px;
-      padding: 24px 16px;
-    }
+.footer {
+    width: 100%;
+    padding: clamp-f(16, 32) clamp-f(16, 32) 32px clamp-f(16, 32);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #222222;
+    color: rgb(225, 225, 225);
+    font-family: "Lato", sans-serif;
 
     &__container {
-      width: 100%;
-      max-width: 1462px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: clamp-f(32, 48);
+        width: 100%;
+        max-width: clamp-f(300, 1200);
     }
-  }
+
+    &__head {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+    }
+
+    &__title {
+        color: #e1e1e1;
+        text-align: center;
+    }
+
+    &__logo {
+        background-color: #fff;
+        padding: 12px;
+        border-radius: 12px;
+        width: max-content;
+        height: max-content;
+
+        & .header__logo {
+            font-size: 2rem;
+            font-family: "Inter", sans-serif;
+        }
+    }
+
+    .column {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 0 clamp-f(24, 32);
+
+        h4 {
+            color: rgb(220, 200, 255);
+        }
+    }
+}
 
 </style>

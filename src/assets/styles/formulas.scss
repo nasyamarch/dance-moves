@@ -1,0 +1,17 @@
+@use "sass:math";
+
+@function clamp-f($min, $max, $min-width: 320, $max-width: 1440) {
+    $slope: math.div(($max - $min), ($max-width - $min-width));
+
+    $y-axis-intersection: $min - $slope * $min-width;
+    $vw: $slope * 100;
+    $val: null;
+
+    @if $y-axis-intersection == 0 {
+        $val: #{$vw}vw;
+    } @else {
+        $val: calc(#{$y-axis-intersection}px + #{$vw}vw);
+    }
+
+    @return clamp(#{$min}px, #{$val}, #{$max}px);
+}
