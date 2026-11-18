@@ -31,8 +31,15 @@ const emit = defineEmits<{
 
         <span class="dance-card__count">
       {{ moveCount }}
-      {{ moveCount === 1 ? 'движение' : moveCount < 5 ? 'движения' : 'движений' }}
-    </span>
+      {{ moveCount % 100 >= 11 && moveCount % 100 <= 14
+            ? 'движений'
+            : moveCount % 10 === 1
+                ? 'движение'
+                : moveCount % 10 >= 2 && moveCount % 10 <= 4
+                    ? 'движения'
+                    : 'движений'
+            }}
+        </span>
     </article>
 </template>
 
@@ -47,11 +54,10 @@ const emit = defineEmits<{
     justify-content: center;
     gap: 10px;
 
-    aspect-ratio: 1/0.6;
-    padding: 24px;
+    padding: clamp-f(12, 24);
     border-radius: 12px;
     border: 2px solid #e4e4e4;
-    background-color: #fff;
+    background: linear-gradient(145deg, rgba(75, 78, 181, 0.4) 0%, rgba(123, 125, 201, 0.6) 26%, rgba(165, 166, 218, 0.6) 49%, rgba(213, 213, 238, 0.8) 77%, #FFFFFF 100%);
     cursor: pointer;
     transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 
@@ -60,19 +66,15 @@ const emit = defineEmits<{
         outline-offset: 2px;
     }
 
-    @media (max-width: 768px) {
-        //min-height: 50px;
-    }
-    @media (max-width: 550px) {
-        //min-height: 120px;
+    @include hover {
+        border-color: #595ccd;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        transform: translateY(-1px);
     }
 
-    @media (hover: hover) and (pointer: fine) {
-        &:hover {
-            border-color: #595ccd;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-            transform: translateY(-1px);
-        }
+    &:active {
+        border-color: #595ccd;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
     }
 
     &__body {
@@ -84,22 +86,22 @@ const emit = defineEmits<{
 
     &__title {
         margin: 0;
-        font-size: clamp(1.25rem, 1.2rem + 0.256vw, 1.5rem);
+        font-size: clamp-f(20, 28);
         text-align: center;
         color: #222;
     }
 
     &__subtitle {
         margin: 0;
-        font-size: 0.85rem;
-        color: #888;
+        font-size: clamp-f(16, 20);
+        color: #4e4d4d;
     }
 
     &__count {
         padding: 2px 8px;
         border-radius: 999px;
         background-color: rgba(89, 92, 205, 0.14);
-        font-size: 0.7rem;
+        font-size: clamp-f(13, 15);
         font-weight: 600;
         color: #4b4eb5;
     }

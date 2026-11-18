@@ -75,6 +75,12 @@ const thumbnail = computed(() => getYouTubeThumb(props.move.video_url))
                 >
           {{ dance.name.ru }}
         </span>
+                <span
+                    v-if="showDance && dance"
+                    class="move-card__dance-eng"
+                >
+          {{ dance.name.eng }}
+        </span>
             </div>
 
             <h3 class="move-card__title">{{ move.name.ru }}</h3>
@@ -104,7 +110,7 @@ const thumbnail = computed(() => getYouTubeThumb(props.move.video_url))
 
     padding: 12px 16px;
     border-radius: 12px;
-    border: 1px solid #e4e4e4;
+    border: 2px solid #e4e4e4;
     background-color: #fff;
     cursor: pointer;
     transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
@@ -114,12 +120,10 @@ const thumbnail = computed(() => getYouTubeThumb(props.move.video_url))
         outline-offset: 2px;
     }
 
-    @media (hover: hover) and (pointer: fine) {
-        &:hover {
-            border-color: #595ccd;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-            transform: translateY(-1px);
-        }
+    @include hover {
+        border-color: #595ccd;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        transform: translateY(-1px);
     }
 
     &__preview {
@@ -180,14 +184,14 @@ const thumbnail = computed(() => getYouTubeThumb(props.move.video_url))
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        gap: 6px;
+        gap: clamp-f(6, 16);
     }
 
     &__tag {
         padding: 2px 8px;
         border-radius: 999px;
         background-color: #f0f0f5;
-        font-size: 0.7rem;
+        font-size: clamp-f(13, 15);
         font-weight: 600;
         color: #666;
 
@@ -198,19 +202,24 @@ const thumbnail = computed(() => getYouTubeThumb(props.move.video_url))
     }
 
     &__dance {
-        font-size: 0.7rem;
+        font-size: clamp-f(14, 18);
+        color: #222;
+    }
+
+    &__dance-eng {
+        font-size: clamp-f(14, 18);
         color: #999;
     }
 
     &__title {
         margin: 0;
-        font-size: 1rem;
+        font-size: clamp-f(16, 20);
         color: #222;
     }
 
     &__subtitle {
         margin: 0;
-        font-size: 0.85rem;
+        font-size: clamp-f(14, 18);
         color: #888;
     }
 

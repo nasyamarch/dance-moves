@@ -82,32 +82,20 @@ const openMove = (move: Move) => {
 
 .home {
     width: 100%;
-    max-width: clamp-f(324, 1264);
-    padding: clamp-f(16, 24) clamp-f(16, 32) clamp-f(48, 64);
-
+    max-width: 1264px;
+    padding: clamp-f(16, 24) clamp-f(16, 48) clamp-f(48, 64);
 
     &__hero {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 12px;
-        padding: 40px 0 56px;
+        padding: clamp-f(24, 40) 0 clamp-f(40, 56);
         text-align: center;
-
-        @media (max-width: 550px) {
-            padding: 24px 0 40px;
-        }
-    }
-
-    &__title {
-        margin: 0;
-        font-size: clamp(1.8rem, 1.3rem + 1.8vw, 3rem);
-        color: #222;
     }
 
     &__subtitle {
-        margin: 0;
-        max-width: 560px;
+        max-width: 450px;
         color: #666;
     }
 
@@ -133,13 +121,18 @@ const openMove = (move: Move) => {
         grid-auto-rows: auto;
         gap: clamp-f(8, 20);
 
+        @include mobile {
+            grid-template-columns: repeat(2, minmax(100px, 1fr));
+        }
+        @include tablet {
+            grid-template-columns: repeat(3, minmax(100px, 1fr));
+        }
     }
 
     &__moves {
         display: flex;
         flex-direction: column;
         gap: 12px;
-        max-width: 860px;
     }
 }
 </style>

@@ -1,4 +1,5 @@
 @use "mixins" as *;
+@use "formulas" as*;
 
 @include font-face("Lato", "Lato-Regular", 400);
 @include font-face("Lato", "Lato-Italic", 400, italic);
@@ -9,3 +10,15 @@
 
 @include font-face("Inter", "Inter");
 @include font-face("Inter", "Inter-Italic", 400, italic);
+
+h1, h2, h3, h4, h5, h6, div, p, span, li, ol {
+    color: #222;
+}
+
+h1 {
+    font-size: clamp-f(28px, 48px)
+}
+
+h5 {
+    font-size: clamp-f(14px, 16px)
+}

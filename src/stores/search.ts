@@ -1,57 +1,68 @@
-import { defineStore } from 'pinia'
-import { computed, ref } from 'vue'
+import {defineStore} from 'pinia'
+import {computed, ref, watch} from 'vue'
 
-import { suggestAll } from '@/data'
-import type { SearchResults } from '@/types'
+import {suggestAll} from '@/data'
+import type {SearchResults} from '@/types'
+
+const STORAGE_KEY = 'dance-moves:query'
 
 /**
  * Состояние глобального поиска: запрос, открытые подсказки.
  * Синхронизируется со строкой поиска в шапке и страницей /search.
+ * Запрос сохраняется в localStorage и переживает перезагрузку страницы.
  */
 export const useSearchStore = defineStore('search', () => {
-  const query = ref('')
-  const isOpen = ref(false)
+    const query = ref(localStorage.getItem(STORAGE_KEY) ?? '')
+    const isOpen = ref(false)
 
-  const normalizedQuery = computed(() => query.value.trim())
-  const hasQuery = computed(() => normalizedQuery.value.length >= 2)
+    watch(query, (value) => {
+        if (value) {
+            localStorage.setItem(STORAGE_KEY, value)
+        } else {
+            localStorage.removeItem(STORAGE_KEY)
+        }
+    })
 
-  const suggestions = computed<SearchResults>(() =>
-    hasQuery.value
-      ? suggestAll(normalizedQuery.value, { dances: 4, moves: 6 })
-      : { dances: [], moves: [] },
-  )
+    const normalizedQuery = computed(() => query.value.trim())
+    const hasQuery = computed(() => normalizedQuery.value.length >= 2)
 
-  const suggestionsCount = computed(
-    () => suggestions.value.dances.length + suggestions.value.moves.length,
-  )
+    const suggestions = computed<SearchResults>(() =>
+        hasQuery.value
+            ? suggestAll(normalizedQuery.value, {dances: 4, moves: 6})
+            : {dances: [], moves: []},
+    )
 
-  const setQuery = (value: string) => {
-    query.value = value
-  }
+    const suggestionsCount = computed(
+        () => suggestions.value.dances.length + suggestions.value.moves.length,
+    )
 
-  const open = () => {
-    isOpen.value = true
-  }
+    const setQuery = (value: string) => {
+        query.value = value
+    }
 
-  const close = () => {
-    isOpen.value = false
-  }
+    const open = () => {
+        isOpen.value = true
+    }
 
-  const reset = () => {
-    query.value = ''
-    isOpen.value = false
-  }
+    const close = () => {
+        isOpen.value = false
+    }
 
-  return {
-    query,
-    isOpen,
-    normalizedQuery,
-    hasQuery,
-    suggestions,
-    suggestionsCount,
-    setQuery,
-    open,
-    close,
-    reset,
-  }
+    const reset = () => {
+        query.value = ''
+        isOpen.value = false
+    }
+
+    return {
+        query,
+        isOpen,
+        normalizedQuery,
+        hasQuery,
+        suggestions,
+        suggestionsCount,
+        setQuery,
+        open,
+        close,
+        reset,
+    }
 })

@@ -135,10 +135,14 @@ const goAllResults = () => {
                     class="search__item"
                     @click="goMove(move.dance_id, move.slug)"
                 >
-                    <span class="search__item-name">{{ move.name.ru }}</span>
+                    <span class="search__item-text">
+                        <span class="search__item-name">{{ move.name.ru }}</span>
+                        <span class="search__item-eng">{{ move.name.eng }}</span>
+                    </span>
                     <span class="search__item-meta">
-            {{ getDanceById(move.dance_id)?.name.ru }}
-          </span>
+                        <span>{{ getDanceById(move.dance_id)?.name.ru }}</span>
+                        <span class="search__item-eng">{{ getDanceById(move.dance_id)?.name.eng }}</span>
+                    </span>
                 </li>
             </ul>
 
@@ -213,7 +217,7 @@ const goAllResults = () => {
     }
 
     &--large &__field {
-        padding: 0 20px;
+        padding: 0 clamp-f(12, 20);
         border-radius: 16px;
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
 
@@ -264,7 +268,7 @@ const goAllResults = () => {
 
     &__item {
         display: flex;
-        align-items: baseline;
+        align-items: flex-start;
         justify-content: space-between;
         gap: 12px;
         padding: 9px 10px;
@@ -276,12 +280,29 @@ const goAllResults = () => {
         }
     }
 
+    &__item-text {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        min-width: 0;
+        text-align: left;
+    }
+
     &__item-name {
         color: #222;
     }
 
     &__item-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
         flex-shrink: 0;
+        text-align: right;
+        font-size: 0.85rem;
+        color: #888;
+    }
+
+    &__item-eng {
         font-size: 0.85rem;
         color: #888;
     }

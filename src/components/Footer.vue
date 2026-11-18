@@ -11,7 +11,7 @@
                         class="header__logo"
                         :to="{ name: 'home' }"
                     >
-                        swing<span>moves</span>
+                        dance<span>moves</span>
                     </RouterLink>
                 </div>
                 <h2 class="footer__title">Сайт создан в целях обучения и&nbsp;прикола</h2>
@@ -21,12 +21,10 @@
 
             <div class="column">
                 <h4>Предложения об улучшении, похвалу и&nbsp;тапки кидать сюда:</h4>
-                <h5>Написать мне в&nbsp;телеграм
-                    <a href="https://t.me/nasya_march">@nasya_march</a>
-                </h5>
-                <h5>Написать мне на&nbsp;почту
-                    <a href="mailto:nastya.marchenko00@gmail.com">nastya.marchenko00@gmail.com</a>
-                </h5>
+                <a href="https://t.me/nasya_march">Написать мне в&nbsp;телеграм</a>
+
+                <a href="mailto:nastya.marchenko00@gmail.com">Написать мне на&nbsp;почту</a>
+
             </div>
 
         </div>
@@ -39,7 +37,7 @@
 
 .footer {
     width: 100%;
-    padding: clamp-f(16, 32) clamp-f(16, 32) 32px clamp-f(16, 32);
+    padding: clamp-f(16, 32) clamp-f(16, 48) 32px clamp-f(16, 32);
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -54,7 +52,7 @@
         align-items: center;
         gap: clamp-f(32, 48);
         width: 100%;
-        max-width: clamp-f(300, 1200);
+        max-width: 1200px;
     }
 
     &__head {
@@ -87,10 +85,22 @@
         flex-direction: column;
         gap: 10px;
         padding: 0 clamp-f(24, 32);
+        text-align: center;
 
         h4 {
             color: rgb(220, 200, 255);
+            max-width: clamp-f(240, 470);
         }
+
+        a {
+            color: #e1e1e1;
+            font-size: clamp-f(14px, 16px);
+            @include hover {
+                scale: 1.05;
+            }
+        }
+
+
     }
 }
 

@@ -16,6 +16,7 @@ const isDropdownOpen = ref(false)
 
 const toggleNav = () => {
     isNavOpen.value = !isNavOpen.value
+    isDropdownOpen.value = isNavOpen.value
     if (isNavOpen.value) searchStore.close()
 }
 
@@ -36,7 +37,7 @@ const goToDance = (slug: string) => {
 
 const handleDocumentClick = (event: MouseEvent) => {
     const target = event.target as HTMLElement
-    if (!target.closest('.header__nav')) {
+    if (!target.closest('.header__nav') && !target.closest('.header__burger')) {
         isDropdownOpen.value = false
     }
     if (!target.closest('.header')) {
@@ -55,7 +56,7 @@ onUnmounted(() => document.removeEventListener('click', handleDocumentClick))
             :to="{ name: 'home' }"
             @click="closeAll"
         >
-            swing<span>moves</span>
+            dance<span>moves</span>
         </RouterLink>
 
         <div class="header__search">
@@ -76,7 +77,7 @@ onUnmounted(() => document.removeEventListener('click', handleDocumentClick))
             </button>
 
             <ul
-                v-if="isDropdownOpen || isNavOpen"
+                v-if="isDropdownOpen"
                 class="header__nav-list"
             >
                 <li
@@ -120,12 +121,11 @@ onUnmounted(() => document.removeEventListener('click', handleDocumentClick))
     align-items: center;
     gap: clamp-f(12, 24);
     width: 100%;
-    max-width: clamp-f(324, 1264);
-    padding: clamp-f(16, 20) clamp-f(16, 32);
+    max-width: 1264px;
+    padding: clamp-f(16, 20) clamp-f(16, 48);
 
     @media (max-width: 768px) {
         flex-wrap: wrap;
-
         padding: 16px;
     }
 
