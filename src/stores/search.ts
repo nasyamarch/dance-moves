@@ -24,7 +24,7 @@ export const useSearchStore = defineStore('search', () => {
     })
 
     const normalizedQuery = computed(() => query.value.trim())
-    const hasQuery = computed(() => normalizedQuery.value.length >= 2)
+    const hasQuery = computed(() => normalizedQuery.value.length >= 1)
 
     const suggestions = computed<SearchResults>(() =>
         hasQuery.value
