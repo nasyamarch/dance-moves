@@ -1,6 +1,6 @@
 
 # dance-moves
-swing dance movement search website
+dance movement search website
 
 # vue-edu-project
 

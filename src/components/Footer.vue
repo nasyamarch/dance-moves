@@ -20,7 +20,7 @@
 
 
             <div class="column">
-                <h4>Предложения об улучшении, похвалу и&nbsp;тапки кидать сюда:</h4>
+                <h3>Предложения об улучшении, похвалу и&nbsp;тапки кидать&nbsp;сюда:</h3>
                 <a href="https://t.me/nasya_march">Написать мне в&nbsp;телеграм</a>
 
                 <a href="mailto:nastya.marchenko00@gmail.com">Написать мне на&nbsp;почту</a>
@@ -42,8 +42,8 @@
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
-    background-color: #222222;
-    color: rgb(225, 225, 225);
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
     font-family: "Lato", sans-serif;
 
     &__container {
@@ -63,12 +63,12 @@
     }
 
     &__title {
-        color: #e1e1e1;
+        color: var(--footer-text);
         text-align: center;
     }
 
     &__logo {
-        background-color: #fff;
+        background-color: var(--bg-surface);
         padding: 12px;
         border-radius: 12px;
         width: max-content;
@@ -84,17 +84,17 @@
         display: flex;
         flex-direction: column;
         gap: 10px;
-        padding: 0 clamp-f(24, 32);
+        //padding: 0 clamp-f(24, 32);
         text-align: center;
 
-        h4 {
+        h3 {
             color: rgb(220, 200, 255);
             max-width: clamp-f(240, 470);
         }
 
         a {
-            color: #e1e1e1;
-            font-size: clamp-f(14px, 16px);
+            color: var(--footer-text);
+            font-size: fs(clamp-f(14px, 16px));
             @include hover {
                 scale: 1.05;
             }

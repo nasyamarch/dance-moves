@@ -14,6 +14,8 @@ import {
 } from '@/data'
 import type {Move} from '@/types'
 
+import {usePageTitle} from '@/composables/usePageTitle'
+
 const route = useRoute()
 const router = useRouter()
 
@@ -23,6 +25,10 @@ const moveSlug = computed(() => String(route.params.moveSlug))
 const dance = computed(() => getDanceBySlug(danceSlug.value))
 const move = computed<Move | undefined>(() =>
     dance.value ? getMoveBySlugs(danceSlug.value, moveSlug.value) : undefined,
+)
+
+usePageTitle(() =>
+    move.value ? `${move.value.name.ru} — Dance Moves` : 'Движение не найдено — Dance Moves',
 )
 
 const levelTag = computed(() => (move.value ? getLevelTag(move.value) : undefined))
@@ -230,8 +236,6 @@ const hostOf = (url: string): string => {
 
 .move-page {
     width: 100%;
-    max-width: 900px;
-    padding: clamp-f(16, 24) clamp-f(16, 48) clamp-f(48, 64);
     align-self: flex-start;
 
     &__breadcrumbs {
@@ -240,10 +244,10 @@ const hostOf = (url: string): string => {
         gap: 8px;
         margin-bottom: 20px;
         font-size: 0.9rem;
-        color: #888;
+        color: var(--text-subtle);
 
         a {
-            color: #595ccd;
+            color: var(--accent-text);
             text-decoration: none;
 
             &:hover {
@@ -266,38 +270,38 @@ const hostOf = (url: string): string => {
     &__tag {
         padding: 4px 12px;
         border-radius: 999px;
-        background-color: #f0f0f5;
+        background-color: var(--bg-surface-alt);
         font-size: 0.8rem;
         font-weight: 600;
-        color: #666;
+        color: var(--text-secondary);
         text-decoration: none;
 
         &--level {
-            background-color: rgba(89, 92, 205, 0.14);
-            color: #4b4eb5;
+            background-color: var(--accent-soft-strong);
+            color: var(--accent-strong);
         }
 
         &--dance:hover {
-            background-color: rgba(89, 92, 205, 0.22);
+            background-color: var(--accent-soft-hover);
         }
     }
 
     &__title {
         margin: 0;
         font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.4rem);
-        color: #222;
+        color: var(--text-primary);
     }
 
     &__subtitle {
         margin: 4px 0 0;
-        color: #888;
+        color: var(--text-subtle);
     }
 
     &__description {
         margin: 0 0 24px;
         font-size: 1.05rem;
         line-height: 1.6;
-        color: #444;
+        color: var(--text-strong);
     }
 
     &__player {
@@ -308,7 +312,7 @@ const hostOf = (url: string): string => {
         border-radius: 16px;
         overflow: hidden;
         background-color: #000;
-        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+        box-shadow: var(--shadow-player);
 
         iframe {
             position: absolute;
@@ -323,9 +327,9 @@ const hostOf = (url: string): string => {
         margin: 0 0 24px;
         padding: 24px;
         border-radius: 16px;
-        background-color: #fff;
+        background-color: var(--bg-surface);
         text-align: center;
-        color: #777;
+        color: var(--text-muted);
     }
 
     &__block {
@@ -335,7 +339,7 @@ const hostOf = (url: string): string => {
     &__block-title {
         margin: 0 0 12px;
         font-size: 1.2rem;
-        color: #222;
+        color: var(--text-primary);
     }
 
     &__links {
@@ -350,7 +354,7 @@ const hostOf = (url: string): string => {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            color: #595ccd;
+            color: var(--accent-text);
             text-decoration: none;
 
             &:hover {
@@ -367,7 +371,7 @@ const hostOf = (url: string): string => {
 
     &__feedback {
         padding-top: 24px;
-        border-top: 1px solid #e0e0e0;
+        border-top: 1px solid var(--border-feedback);
     }
 
     &__likes {
@@ -379,28 +383,28 @@ const hostOf = (url: string): string => {
 
     &__like {
         padding: 10px 18px;
-        border: 1px solid #ddd;
+        border: 1px solid var(--border);
         border-radius: 999px;
-        background-color: #fff;
+        background-color: var(--bg-surface);
         font: inherit;
         font-weight: 600;
-        color: #b0b0b0;
+        color: var(--text-disabled);
         cursor: not-allowed;
     }
 
     &__hint {
         margin: 0;
         font-size: 0.9rem;
-        color: #999;
+        color: var(--text-faint);
     }
 
     &__empty {
         padding: 48px 0;
         text-align: center;
-        color: #777;
+        color: var(--text-muted);
 
         a {
-            color: #595ccd;
+            color: var(--accent-text);
         }
     }
 }

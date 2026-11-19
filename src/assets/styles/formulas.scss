@@ -15,3 +15,9 @@
 
     @return clamp(#{$min}px, #{$val}, #{$max}px);
 }
+
+// Размер шрифта с учётом пользовательского масштаба (--font-scale):
+// fs(clamp-f(14, 16)) → calc(var(--font-scale) * clamp(14px, ..., 16px)).
+@function fs($value) {
+    @return calc(var(--font-scale) * #{$value});
+}

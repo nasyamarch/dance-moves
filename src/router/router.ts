@@ -41,4 +41,11 @@ const router = createRouter({
   },
 })
 
+// После смены маршрута переводим фокус на <main>: скрин-ридер начинает
+// читать новую страницу с основного контента, а не со старой позиции.
+router.afterEach((_to, from) => {
+  if (!from.name) return // первый заход на сайт — фокус не трогаем
+  document.getElementById('main')?.focus({ preventScroll: true })
+})
+
 export default router

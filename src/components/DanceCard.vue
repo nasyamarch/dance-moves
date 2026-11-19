@@ -56,25 +56,25 @@ const emit = defineEmits<{
 
     padding: clamp-f(12, 24);
     border-radius: 12px;
-    border: 2px solid #e4e4e4;
-    background: linear-gradient(145deg, rgba(75, 78, 181, 0.4) 0%, rgba(123, 125, 201, 0.6) 26%, rgba(165, 166, 218, 0.6) 49%, rgba(213, 213, 238, 0.8) 77%, #FFFFFF 100%);
+    border: 2px solid var(--border-soft);
+    background: var(--gradient-dance-card);
     cursor: pointer;
     transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 
     &:focus-visible {
-        outline: 2px solid #595ccd;
+        outline: 2px solid var(--accent);
         outline-offset: 2px;
     }
 
     @include hover {
-        border-color: #595ccd;
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        border-color: var(--accent);
+        box-shadow: var(--shadow-md);
         transform: translateY(-1px);
     }
 
     &:active {
-        border-color: #595ccd;
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        border-color: var(--accent);
+        box-shadow: var(--shadow-md);
     }
 
     &__body {
@@ -86,24 +86,24 @@ const emit = defineEmits<{
 
     &__title {
         margin: 0;
-        font-size: clamp-f(20, 28);
+        font-size: fs(clamp-f(20, 28));
         text-align: center;
-        color: #222;
+        color: var(--text-primary);
     }
 
     &__subtitle {
         margin: 0;
-        font-size: clamp-f(16, 20);
-        color: #4e4d4d;
+        font-size: fs(clamp-f(16, 20));
+        color: var(--text-strong);
     }
 
     &__count {
         padding: 2px 8px;
         border-radius: 999px;
-        background-color: rgba(89, 92, 205, 0.14);
-        font-size: clamp-f(13, 15);
+        background-color: var(--accent-soft-strong);
+        font-size: fs(clamp-f(13, 15));
         font-weight: 600;
-        color: #4b4eb5;
+        color: var(--accent-strong);
     }
 }
 </style>

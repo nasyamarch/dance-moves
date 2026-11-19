@@ -6,6 +6,10 @@ import {getAllDances, getDanceById, getMovesByDance, getPopularMoves} from '@/da
 import type {Dance, Move} from '@/types'
 import {useRouter} from 'vue-router'
 
+import {usePageTitle} from '@/composables/usePageTitle'
+
+usePageTitle(() => 'Dance Moves — база танцевальных движений')
+
 const router = useRouter()
 
 const dances = getAllDances()
@@ -82,8 +86,6 @@ const openMove = (move: Move) => {
 
 .home {
     width: 100%;
-    max-width: 1264px;
-    padding: clamp-f(16, 24) clamp-f(16, 48) clamp-f(48, 64);
 
     &__hero {
         display: flex;
@@ -96,7 +98,7 @@ const openMove = (move: Move) => {
 
     &__subtitle {
         max-width: 450px;
-        color: #666;
+        color: var(--text-secondary);
     }
 
     &__search {
@@ -112,7 +114,7 @@ const openMove = (move: Move) => {
     &__section-title {
         margin: 0 0 20px;
         font-size: 1.5rem;
-        color: #222;
+        color: var(--text-primary);
     }
 
     &__dances {

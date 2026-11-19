@@ -5,8 +5,10 @@ import Footer from "@/components/Footer.vue";
 </script>
 
 <template>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+
   <Header />
-  <main>
+  <main id="main" tabindex="-1">
     <RouterView />
   </main>
 

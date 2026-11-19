@@ -15,6 +15,10 @@ import {useFiltersStore} from '@/stores/filters'
 import {useSearchStore} from '@/stores/search'
 import type {Move} from '@/types'
 
+import {usePageTitle} from '@/composables/usePageTitle'
+
+usePageTitle(() => 'Поиск — Dance Moves')
+
 const route = useRoute()
 const router = useRouter()
 const searchStore = useSearchStore()
@@ -93,7 +97,10 @@ const total = computed(
         </div>
 
         <template v-if="searchStore.hasQuery">
-            <p class="search-page__count">
+            <p
+                class="search-page__count"
+                aria-live="polite"
+            >
                 Найдено: {{ results.dances.length }} танцев,
                 {{ results.moves.length }} движений
             </p>
@@ -231,17 +238,11 @@ const total = computed(
 
 .search-page {
     width: 100%;
-    max-width: 1000px;
-    padding: 24px 32px 64px;
-
-    @media (max-width: 550px) {
-        padding: 16px 16px 48px;
-    }
 
     &__title {
         margin: 0 0 16px;
         font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.4rem);
-        color: #222;
+        color: var(--text-primary);
     }
 
     &__search {
@@ -251,7 +252,7 @@ const total = computed(
     &__count {
         margin: 0 0 16px;
         font-size: 0.9rem;
-        color: #888;
+        color: var(--text-subtle);
     }
 
     &__filters {
@@ -262,9 +263,9 @@ const total = computed(
         margin-bottom: 24px;
         padding: 16px;
         border-radius: 16px;
-        background-color: #fff;
+        background-color: var(--bg-surface);
 
-        @include mobile {
+        @include mobile-large {
             display: grid;
             grid-template-columns: 1fr 1fr;
         }
@@ -278,24 +279,24 @@ const total = computed(
             display: flex;
             flex-direction: column;
             gap: 4px;
-            font-size: clamp-f(14, 20);
-            color: #666;
+            font-size: fs(clamp-f(14, 20));
+            color: var(--text-secondary);
         }
 
         select {
             padding: 9px 24px 9px 12px;
-            border: 1px solid #ddd;
+            border: 1px solid var(--border);
             border-radius: 10px;
-            background-color: #fff;
+            background-color: var(--bg-surface);
             font: inherit;
-            color: #222;
+            color: var(--text-primary);
             cursor: pointer;
 
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
 
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cg id='SVGRepo_bgCarrier' stroke-width='0'%3e%3c/g%3e%3cg id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'%3e%3c/g%3e%3cg id='SVGRepo_iconCarrier'%3e%3c!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools --%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M12.7071 14.7071C12.3166 15.0976 11.6834 15.0976 11.2929 14.7071L6.29289 9.70711C5.90237 9.31658 5.90237 8.68342 6.29289 8.29289C6.68342 7.90237 7.31658 7.90237 7.70711 8.29289L12 12.5858L16.2929 8.29289C16.6834 7.90237 17.3166 7.90237 17.7071 8.29289C18.0976 8.68342 18.0976 9.31658 17.7071 9.70711L12.7071 14.7071Z' fill='%23000000'%3e%3c/path%3e%3c/g%3e%3c/svg%3e");
+            background-image: var(--select-arrow);
             background-repeat: no-repeat;
             background-position: right 0px center;
             background-size: 24px;
@@ -304,18 +305,18 @@ const total = computed(
 
     &__reset {
         padding: 9px 16px;
-        border: 1px solid #ddd;
+        border: 1px solid var(--border);
         border-radius: 10px;
-        background-color: #fff;
+        background-color: var(--bg-surface);
         font: inherit;
-        font-size: clamp-f(14, 20);
-        color: #595ccd;
+        font-size: fs(clamp-f(14, 20));
+        color: var(--accent-text);
         cursor: pointer;
         transition: background-color 0.2s ease, border-color 0.2s ease;
 
         @include hover {
-            border-color: #595ccd;
-            background-color: rgba(89, 92, 205, 0.1);
+            border-color: var(--accent);
+            background-color: var(--accent-soft);
         }
 
         @include mobile {
@@ -336,7 +337,7 @@ const total = computed(
     &__block-title {
         margin: 0 0 12px;
         font-size: 1.2rem;
-        color: #222;
+        color: var(--text-primary);
     }
 
     &__dances {
@@ -354,21 +355,21 @@ const total = computed(
             height: 100%;
             padding: 16px;
             border-radius: 12px;
-            background-color: #fff;
+            background-color: var(--bg-surface);
             text-decoration: none;
             transition: box-shadow 0.2s ease;
 
             &:hover {
-                box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+                box-shadow: var(--shadow-md);
             }
 
             strong {
-                color: #222;
+                color: var(--text-primary);
             }
 
             span {
                 font-size: 0.85rem;
-                color: #888;
+                color: var(--text-subtle);
             }
         }
     }
@@ -383,7 +384,7 @@ const total = computed(
     &__hint {
         padding: 32px 0;
         text-align: center;
-        color: #777;
+        color: var(--text-muted);
     }
 }
 </style>

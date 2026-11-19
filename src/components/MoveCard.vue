@@ -110,19 +110,19 @@ const thumbnail = computed(() => getYouTubeThumb(props.move.video_url))
 
     padding: 12px 16px;
     border-radius: 12px;
-    border: 2px solid #e4e4e4;
-    background-color: #fff;
+    border: 2px solid var(--border-soft);
+    background-color: var(--bg-surface);
     cursor: pointer;
     transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 
     &:focus-visible {
-        outline: 2px solid #595ccd;
+        outline: 2px solid var(--accent);
         outline-offset: 2px;
     }
 
     @include hover {
-        border-color: #595ccd;
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        border-color: var(--accent);
+        box-shadow: var(--shadow-md);
         transform: translateY(-1px);
     }
 
@@ -133,7 +133,7 @@ const thumbnail = computed(() => getYouTubeThumb(props.move.video_url))
         height: 70px;
         border-radius: 8px;
         overflow: hidden;
-        background-color: #ececec;
+        background-color: var(--bg-surface-muted);
 
         img {
             width: 100%;
@@ -147,7 +147,7 @@ const thumbnail = computed(() => getYouTubeThumb(props.move.video_url))
             align-items: center;
             justify-content: center;
             font-size: 1.6rem;
-            color: #aaa;
+            color: var(--text-placeholder);
         }
 
         @media (max-width: 550px) {
@@ -190,37 +190,37 @@ const thumbnail = computed(() => getYouTubeThumb(props.move.video_url))
     &__tag {
         padding: 2px 8px;
         border-radius: 999px;
-        background-color: #f0f0f5;
-        font-size: clamp-f(13, 15);
+        background-color: var(--bg-surface-alt);
+        font-size: fs(clamp-f(13, 15));
         font-weight: 600;
-        color: #666;
+        color: var(--text-secondary);
 
         &--level {
-            background-color: rgba(89, 92, 205, 0.14);
-            color: #4b4eb5;
+            background-color: var(--accent-soft-strong);
+            color: var(--accent-strong);
         }
     }
 
     &__dance {
-        font-size: clamp-f(14, 18);
-        color: #222;
+        font-size: fs(clamp-f(14, 18));
+        color: var(--text-primary);
     }
 
     &__dance-eng {
-        font-size: clamp-f(14, 18);
-        color: #999;
+        font-size: fs(clamp-f(14, 18));
+        color: var(--text-faint);
     }
 
     &__title {
         margin: 0;
-        font-size: clamp-f(16, 20);
-        color: #222;
+        font-size: fs(clamp-f(16, 20));
+        color: var(--text-primary);
     }
 
     &__subtitle {
         margin: 0;
-        font-size: clamp-f(14, 18);
-        color: #888;
+        font-size: fs(clamp-f(14, 18));
+        color: var(--text-subtle);
     }
 
     &__meta {
@@ -233,11 +233,11 @@ const thumbnail = computed(() => getYouTubeThumb(props.move.video_url))
 
     &__likes {
         font-size: 0.8rem;
-        color: #b0b0b0;
+        color: var(--text-disabled);
     }
 
     &__arrow {
-        color: #595ccd;
+        color: var(--accent);
         font-size: 1.1rem;
     }
 

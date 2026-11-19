@@ -2,6 +2,7 @@
 @use "formulas" as *;
 @use "mixins" as *;
 @use "fonts" as *;
+@use "themes";
 
 * {
     box-sizing: border-box;
@@ -10,10 +11,71 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+html {
+    // Базовый размер = масштаб пользователя (100% / 125% / 150%);
+    // все размеры в rem масштабируются автоматически.
+    font-size: calc(16px * var(--font-scale));
+}
+
 body {
-    background-color: #dcdcdc;
+    background-color: var(--bg-page);
     font-family: 'Inter', sans-serif;
-    color: #222;
+    color: var(--text-primary);
+}
+
+// Единый стиль фокуса с клавиатуры в обеих темах.
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+// Программный фокус на <main> после навигации — без видимого контура.
+main:focus {
+    outline: none;
+}
+
+// Ссылка «Перейти к содержимому»: появляется только при фокусе по Tab.
+.skip-link {
+    position: fixed;
+    top: 8px;
+    left: 8px;
+    z-index: 100;
+    padding: 10px 16px;
+    border: 2px solid var(--accent);
+    border-radius: 10px;
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
+    font-weight: 600;
+    text-decoration: none;
+    transform: translateY(-250%);
+    transition: transform 0.15s ease;
+
+    &:focus {
+        transform: none;
+    }
+}
+
+// Пользователь просит уменьшить движение — убираем анимации.
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+// Плавная смена цветов при переключении темы (класс вешается на <html>
+// store'ом темы на время переключения).
+html.theme-anim,
+html.theme-anim *,
+html.theme-anim *::before,
+html.theme-anim *::after {
+    transition: background-color 0.25s ease, border-color 0.25s ease,
+        color 0.25s ease, fill 0.25s ease, box-shadow 0.25s ease !important;
 }
 
 #app {
@@ -31,6 +93,8 @@ main {
     align-items: center;
     white-space: pre-line;
     min-height: calc(100dvh - 80px);
+    max-width: 1264px;
+    padding: clamp-f(16, 24) clamp-f(16, 48) clamp-f(48, 64);
 }
 
 a {

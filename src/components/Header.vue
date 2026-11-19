@@ -3,6 +3,8 @@ import {onMounted, onUnmounted, ref} from 'vue'
 import {useRouter} from 'vue-router'
 
 import Search from '@/components/Search.vue'
+import ThemeToggle from '@/components/ThemeToggle.vue'
+import FontScaleToggle from '@/components/FontScaleToggle.vue'
 import {getAllDances} from '@/data'
 import {useSearchStore} from '@/stores/search'
 
@@ -64,12 +66,17 @@ onUnmounted(() => document.removeEventListener('click', handleDocumentClick))
         </div>
 
         <nav
+            id="header-nav"
             class="header__nav"
             :class="{ 'is-active': isNavOpen }"
+            @keydown.esc="isDropdownOpen = false"
         >
             <button
                 class="header__nav-toggle"
                 type="button"
+                aria-haspopup="true"
+                :aria-expanded="isDropdownOpen"
+                aria-controls="header-nav-list"
                 @click="toggleDropdown"
             >
                 Танцы
@@ -78,6 +85,7 @@ onUnmounted(() => document.removeEventListener('click', handleDocumentClick))
 
             <ul
                 v-if="isDropdownOpen"
+                id="header-nav-list"
                 class="header__nav-list"
             >
                 <li
@@ -96,17 +104,24 @@ onUnmounted(() => document.removeEventListener('click', handleDocumentClick))
             </ul>
         </nav>
 
-        <div
+        <div class="header__controls">
+            <ThemeToggle/>
+            <FontScaleToggle/>
+        </div>
+
+        <button
             class="header__burger"
             :class="{ 'is-active': isNavOpen }"
-            role="button"
+            type="button"
+            :aria-expanded="isNavOpen"
+            aria-controls="header-nav"
             aria-label="Меню"
             @click="toggleNav"
         >
             <span></span>
             <span></span>
             <span></span>
-        </div>
+        </button>
     </header>
 </template>
 
@@ -134,12 +149,23 @@ onUnmounted(() => document.removeEventListener('click', handleDocumentClick))
         font-size: 1.35rem;
         font-weight: 800;
         letter-spacing: -0.02em;
-        color: #222;
+        color: var(--text-primary);
         text-decoration: none;
 
+        padding: 12px;
+        border-radius: 12px;
+        background-color: var(--bg-surface);
+
         span {
-            color: #595ccd;
+            color: var(--accent);
         }
+    }
+
+    &__controls {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-shrink: 0;
     }
 
     &__search {
@@ -168,11 +194,11 @@ onUnmounted(() => document.removeEventListener('click', handleDocumentClick))
             background: none;
             font: inherit;
             font-weight: 600;
-            color: #222;
+            color: var(--text-primary);
             cursor: pointer;
 
             &:hover {
-                background-color: rgba(0, 0, 0, 0.06);
+                background-color: var(--bg-hover);
             }
         }
 
@@ -194,9 +220,9 @@ onUnmounted(() => document.removeEventListener('click', handleDocumentClick))
             margin: 0;
             padding: 8px;
             list-style: none;
-            background-color: #fff;
+            background-color: var(--bg-surface);
             border-radius: 16px;
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
+            box-shadow: var(--shadow-lg);
         }
 
         &-link {
@@ -206,17 +232,17 @@ onUnmounted(() => document.removeEventListener('click', handleDocumentClick))
             gap: 12px;
             padding: 10px 12px;
             border-radius: 10px;
-            color: #222;
+            color: var(--text-primary);
             text-decoration: none;
 
             &:hover {
-                background-color: rgba(89, 92, 205, 0.1);
+                background-color: var(--accent-soft);
             }
         }
 
         &-link-meta {
             font-size: 0.8rem;
-            color: #999;
+            color: var(--text-faint);
         }
 
         @media (max-width: 768px) {
@@ -232,7 +258,7 @@ onUnmounted(() => document.removeEventListener('click', handleDocumentClick))
             &-toggle {
                 width: 100%;
                 justify-content: space-between;
-                background-color: #fff;
+                background-color: var(--bg-surface);
             }
 
             &-list {
@@ -240,7 +266,7 @@ onUnmounted(() => document.removeEventListener('click', handleDocumentClick))
                 min-width: 0;
                 margin-top: 8px;
                 box-shadow: none;
-                background-color: #fff;
+                background-color: var(--bg-surface);
             }
         }
     }
@@ -252,13 +278,17 @@ onUnmounted(() => document.removeEventListener('click', handleDocumentClick))
         justify-content: center;
         gap: 4px;
         margin-left: auto;
+        padding: 4px;
+        border: none;
+        background: none;
+        font: inherit;
         cursor: pointer;
 
         span {
             width: 22px;
             height: 3px;
             border-radius: 2px;
-            background-color: #222;
+            background-color: var(--text-primary);
             transition: transform 0.3s ease, opacity 0.3s ease;
             transform-origin: center;
         }

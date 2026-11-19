@@ -6,11 +6,17 @@ import MoveCard from '@/components/MoveCard.vue'
 import {getDanceBySlug, getMovesByDance, sortMoves} from '@/data'
 import type {Move, SortMode} from '@/types'
 
+import {usePageTitle} from '@/composables/usePageTitle'
+
 const route = useRoute()
 const router = useRouter()
 
 const danceSlug = computed(() => String(route.params.danceSlug))
 const dance = computed(() => getDanceBySlug(danceSlug.value))
+
+usePageTitle(() =>
+    dance.value ? `${dance.value.name.ru} — Dance Moves` : 'Танец не найден — Dance Moves',
+)
 
 const query = ref('')
 const sortMode = ref<SortMode>('level')
@@ -80,6 +86,7 @@ const openMove = (move: Move) => {
             <p
                 v-if="visibleMoves.length"
                 class="moves-page__count"
+                aria-live="polite"
             >
                 Найдено движений: {{ visibleMoves.length }}
             </p>
@@ -126,8 +133,6 @@ const openMove = (move: Move) => {
 
 .moves-page {
     width: 100%;
-    max-width: 1000px;
-    padding: 24px 32px 64px;
 
     @media (max-width: 550px) {
         padding: 16px 16px 48px;
@@ -138,10 +143,10 @@ const openMove = (move: Move) => {
         gap: 8px;
         margin-bottom: 16px;
         font-size: 0.9rem;
-        color: #888;
+        color: var(--text-subtle);
 
         a {
-            color: #595ccd;
+            color: var(--accent-text);
             text-decoration: none;
 
             &:hover {
@@ -157,12 +162,12 @@ const openMove = (move: Move) => {
     &__title {
         margin: 0;
         font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.4rem);
-        color: #222;
+        color: var(--text-primary);
     }
 
     &__subtitle {
         margin: 4px 0 0;
-        color: #888;
+        color: var(--text-subtle);
     }
 
     &__controls {
@@ -180,14 +185,14 @@ const openMove = (move: Move) => {
         padding: 12px 16px;
         border: 2px solid transparent;
         border-radius: 999px;
-        background-color: #fff;
+        background-color: var(--bg-surface);
         font: inherit;
         outline: none;
         transition: border-color 0.2s ease, box-shadow 0.2s ease;
 
         &:focus {
-            border-color: #595ccd;
-            box-shadow: 0 0 0 4px rgba(89, 92, 205, 0.15);
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--accent-ring);
         }
     }
 
@@ -196,22 +201,22 @@ const openMove = (move: Move) => {
         align-items: center;
         gap: 8px;
         font-size: 0.9rem;
-        color: #666;
+        color: var(--text-secondary);
 
         select {
             padding: 10px 32px 10px 12px;
-            border: 1px solid #ddd;
+            border: 1px solid var(--border);
             border-radius: 10px;
-            background-color: #fff;
+            background-color: var(--bg-surface);
             font: inherit;
-            color: #222;
+            color: var(--text-primary);
             cursor: pointer;
 
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
 
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cg id='SVGRepo_bgCarrier' stroke-width='0'%3e%3c/g%3e%3cg id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'%3e%3c/g%3e%3cg id='SVGRepo_iconCarrier'%3e%3c!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools --%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M12.7071 14.7071C12.3166 15.0976 11.6834 15.0976 11.2929 14.7071L6.29289 9.70711C5.90237 9.31658 5.90237 8.68342 6.29289 8.29289C6.68342 7.90237 7.31658 7.90237 7.70711 8.29289L12 12.5858L16.2929 8.29289C16.6834 7.90237 17.3166 7.90237 17.7071 8.29289C18.0976 8.68342 18.0976 9.31658 17.7071 9.70711L12.7071 14.7071Z' fill='%23000000'%3e%3c/path%3e%3c/g%3e%3c/svg%3e");
+            background-image: var(--select-arrow);
             background-repeat: no-repeat;
             background-position: right 6px center;
             background-size: 24px;
@@ -221,7 +226,7 @@ const openMove = (move: Move) => {
     &__count {
         margin: 0 0 12px;
         font-size: 0.85rem;
-        color: #999;
+        color: var(--text-faint);
     }
 
     &__list {
@@ -233,10 +238,10 @@ const openMove = (move: Move) => {
     &__empty {
         padding: 32px 0;
         text-align: center;
-        color: #777;
+        color: var(--text-muted);
 
         a {
-            color: #595ccd;
+            color: var(--accent-text);
         }
     }
 }
